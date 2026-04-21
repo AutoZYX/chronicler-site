@@ -7,21 +7,80 @@ const GH_TOOL = "https://github.com/AutoZYX/chronicler";       // placeholder (c
 const GH_SITE = "https://github.com/AutoZYX/chronicler-site";  // this landing page
 const NOTIFY = "mailto:hello@autozyx.com?subject=Chronicler%20v0.1%20launch%20notify&body=Please%20let%20me%20know%20when%20Chronicler%20ships.";
 
-const SAMPLE_OUTPUT = `10:12 – 11:27   🎓 jlu    ●●●   75 min
-申报教授评审表密集编辑 + 2025-2026 新成果汇总
-Heavy editing on the professor-title review form,
-plus 2025-2026 new-results roll-up
+const SAMPLE_OUTPUT = `Day: 2026-04-15 · Tuesday · a multi-identity day
 
-— 编辑申报教授评审表                45 min
-  Editing the professor review form
-— 整理 2025-2026 新成果              15 min
-  Aggregating 2025-2026 publications
-— LetPub 期刊 IF 速查                 8 min
-  Checking LetPub impact factors
+07:15 – 08:45   🌿 life     ●●●      90 min
+Morning routine — breakfast, school drop, walk back
+早晨——早餐、送娃上学、步行回家
 
-未完事项 · Hanging threads
-  · 评审表 2025 成果章节仍在对齐
-    2025-results section still needs alignment`;
+───────────────────────────────────────────────
+
+09:02 – 11:38   🎓 jlu      ●●●     156 min
+NSFC proposal revision — first focused block in two weeks
+基金申请修订——两周来第一个集中块
+
+— Overleaf · nsfc_proposal.tex            98 min
+  Overleaf 改提案正文
+— arXiv · priors cross-check              22 min
+  查相关先验文献
+— Email with co-author                     16 min
+  和合作者邮件沟通
+— Student WeChat reply                      8 min
+  给学生微信回复
+
+Hanging · 未完事项
+  · 4.2 节 discussion 还差一段——明天接着写
+    Section 4.2 discussion needs one more paragraph
+
+───────────────────────────────────────────────
+
+11:40 – 12:20   🌿 life     ●●○      40 min
+Lunch + family WeChat group
+午饭 + 家人群闲聊
+
+12:55 – 14:20   🛡 zyt      ●●○      85 min
+Async safety-team — SOTIF weekly + OEM memo v3
+异步安全团队时段——SOTIF 周会笔记 + OEM 备忘录
+
+Hanging · OEM memo v3 结论章节未完
+         memo v3 conclusion still pending
+
+14:25 – 14:50   ✈️ dr       ●●○      25 min
+Founder interjection — LinkedIn draft + partner ping
+创始人短时插入——LinkedIn 起草 + 合作方跟进
+
+15:10 – 17:30   🌿 life     ●●●     140 min
+Kid pickup → park (engineering trucks) → dinner
+接娃 → 公园（他在玩工程车）→ 晚饭
+
+20:15 – 21:40   ✈️ dr       ●●●      85 min
+After-kid founder block — NDS platform UX polish
+娃睡后创始人时段——NDS 平台 UX 打磨
+
+— Claude Code · frontend refactor         58 min
+  用 Claude Code 重构前端
+— GitHub · 3 PRs review & merge           18 min
+  review 并合并 3 个 PR
+
+21:45 – 22:30   🎓 jlu      ●●○      45 min
+Bedtime — paper browsing, 2 ideas jotted for tomorrow's 4.2
+睡前翻论文，记下 2 个明天 4.2 章节用的想法
+
+═══════════════════════════════════════════════
+
+Summary · 一天总览
+
+  🎓 jlu   201 min / 3h 21m   NSFC 推进 + 睡前阅读
+  🛡 zyt    85 min / 1h 25m   SOTIF 周会 + OEM 备忘录
+  ✈️ dr    110 min / 1h 50m   NDS UX + 合作跟进 + 内容
+  🌿 life  270 min / 4h 30m   早晨 + 接送 + 家庭时间
+
+  Total observed: 666 min / 11h 06m
+
+  Cross-day threads · 跨天主线
+    · NSFC 4.2 discussion (yesterday → today → tomorrow)
+    · OEM memo v3 conclusion (started today, pending)
+    · Bedtime notes feed tomorrow's focus block`;
 
 export default function Home() {
   const { lang } = useLang();
@@ -177,7 +236,7 @@ export default function Home() {
         {/* ═══════════════════════════ SAMPLE OUTPUT ═══════════════════════════ */}
         <section className="divider">
           <h2 className="section-title">
-            {zh ? "一段一小时的样子" : "What an hour looks like"}
+            {zh ? "一天的样子" : "What a day looks like"}
           </h2>
           <p
             style={{
@@ -187,9 +246,21 @@ export default function Home() {
               maxWidth: 720,
             }}
           >
-            {zh
-              ? "每晚 23:35，Claude Opus 读过去 24 小时事件流 + 你的 OKR 文件，产出双语分段。写进你自己的 Obsidian vault——iCloud 同步，iOS Obsidian 可读。"
-              : "Each night at 23:35, Claude Opus reads the day's event stream and your OKR file, emitting bilingual segments. Written as Markdown into your Obsidian vault — iCloud-synced, iOS-readable."}
+            {zh ? (
+              <>
+                虚构示例——一位学者 / 安全工程师 / 独立创始人 / 家长身份并存的典型一天。
+                每晚 23:35，Claude Opus 读过去 24 小时事件流 + 你的 OKR 文件，
+                产出双语分段。写进你自己的 Obsidian vault——iCloud 同步，iOS 可读。
+              </>
+            ) : (
+              <>
+                A fictional example — one day in the life of someone who is
+                simultaneously an academic, a safety engineer, an indie founder,
+                and a parent. Each night at 23:35, Claude Opus reads the day&rsquo;s
+                event stream plus your OKR file and emits bilingual segments into
+                your Obsidian vault (iCloud-synced, iOS-readable).
+              </>
+            )}
           </p>
           <div className="code-block">
             <pre style={{ margin: 0, whiteSpace: "pre" }}>{SAMPLE_OUTPUT}</pre>
@@ -202,7 +273,7 @@ export default function Home() {
               color: "var(--muted)",
             }}
           >
-            Inferred / 2026-04-20.md
+            Inferred / 2026-04-15.md
           </p>
         </section>
 
