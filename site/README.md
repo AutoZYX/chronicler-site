@@ -39,3 +39,4 @@ need more locales later, swap the pattern for `next-intl` or similar.
 ## License
 
 AGPLv3 (matches the Chronicler project itself).
+
