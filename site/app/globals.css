@@ -3,7 +3,7 @@
 :root {
   --bg: #faf9f5;
   --text: #1a1a18;
-  --accent: #C65D3E;
+  --accent: #c85a3a;
   --accent-light: #e8a08c;
   --border: #e0ded6;
   --card-bg: #ffffff;
@@ -12,7 +12,7 @@
   --badge-bg: #f0eeea;
   --radius: 10px;
 
-  /* Four identity accents, reused in the accent-bar motif */
+  /* Four identity accents used in the accent-bar motif only. */
   --acc-jlu:  #8B6F47;
   --acc-zyt:  #2C5F7E;
   --acc-dr:   #C65D3E;
@@ -46,7 +46,7 @@ h1, h2, h3, h4 {
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
-/* Small identity accent bar — used in hero + architecture diagram */
+/* Small four-color identity accent bar — used above hero title only. */
 .accent-bar {
   display: inline-flex;
   height: 3px;

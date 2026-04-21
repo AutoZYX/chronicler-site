@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#C65D3E",
+  themeColor: "#c85a3a",
 };
 
 export default function RootLayout({
@@ -34,7 +34,7 @@ export default function RootLayout({
       <body className="min-h-screen flex flex-col">
         <I18nProvider>
           <Nav />
-          <main className="mx-auto max-w-3xl w-full px-4 py-10 flex-1">
+          <main className="mx-auto max-w-5xl w-full px-4 py-8 flex-1">
             {children}
           </main>
           <Footer />

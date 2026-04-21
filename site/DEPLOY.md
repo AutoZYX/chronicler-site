@@ -35,16 +35,18 @@ npx vercel --prod
 
 In the Vercel project → Settings → Domains → add `chronicler.autozyx.com`.
 
-At your DNS provider (Cloudflare, since `autozyx.com` lives there):
+At your DNS provider (Cloudflare, since `autozyx.com` lives there) add an
+**A record** — Vercel prefers this over CNAME for subdomain routing:
 
 ```
-Type:    CNAME
+Type:    A
 Name:    chronicler
-Target:  cname.vercel-dns.com
+Target:  76.76.21.21
 Proxy:   DNS only (grey cloud)  — Vercel handles TLS
+TTL:     Auto
 ```
 
-Wait ~30s for DNS propagation; Vercel provisions the Let's Encrypt cert automatically.
+Wait ~30s for DNS propagation; Vercel auto-issues the Let's Encrypt cert.
 
 ## Subsequent deploys
 

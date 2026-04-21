@@ -5,11 +5,10 @@ import { useLang } from "@/lib/i18n";
 
 const GH = "https://github.com/AutoZYX/chronicler";
 
-/** A real-looking Inferred segment output used as the hero demo. */
 const SAMPLE_OUTPUT = `10:12 – 11:27   🎓 jlu    ●●●   75 min
 申报教授评审表密集编辑 + 2025-2026 新成果汇总
-Heavy editing on the professor-title review form, plus
-2025-2026 new-results roll-up
+Heavy editing on the professor-title review form,
+plus 2025-2026 new-results roll-up
 
 — 编辑申报教授评审表                45 min
   Editing the professor review form
@@ -27,244 +26,265 @@ export default function Home() {
   const zh = lang === "zh";
 
   return (
-    <div>
-      {/* ─────────── Hero (centered) ─────────── */}
-      <section className="text-center pt-6 pb-12">
-        <div className="accent-bar mx-auto mb-7">
-          <span style={{ background: "var(--acc-jlu)" }} />
-          <span style={{ background: "var(--acc-zyt)" }} />
-          <span style={{ background: "var(--acc-dr)" }} />
-          <span style={{ background: "var(--acc-life)" }} />
-        </div>
+    <div className="max-w-3xl">
+      {/* Accent identity bar — four context colors as a visual motif */}
+      <div className="accent-bar mb-5">
+        <span style={{ background: "var(--acc-jlu)" }} />
+        <span style={{ background: "var(--acc-zyt)" }} />
+        <span style={{ background: "var(--acc-dr)" }} />
+        <span style={{ background: "var(--acc-life)" }} />
+      </div>
 
-        <h1
-          className="text-4xl sm:text-5xl mb-3"
-          style={{ fontFamily: "Playfair Display, Georgia, serif" }}
-        >
-          Chronicler
-        </h1>
-        <div className="text-lg text-[var(--muted)] mb-6">观时者</div>
+      {/* h1 + description — left-aligned, same rhythm as ROAM */}
+      <h1 className="text-3xl mb-4">Chronicler · 观时者</h1>
+      <p className="text-[var(--muted)] mb-8">
+        {zh
+          ? "一份你自己拥有的 AI 时间账本。观察你在多重身份间的真实工作流向——不评判，只记录。柳比歇夫时间账本法，在 AI 时代几乎零成本。"
+          : "An AI-assisted time ledger you own. It watches how your work flows across the identities you switch between — witnessing, not judging. Lyubishchev's time-accounting method, made nearly free by AI."}
+      </p>
 
-        <p className="text-[var(--text)] text-base max-w-xl mx-auto leading-relaxed mb-8">
-          {zh
-            ? "一份你自己拥有的 AI 时间账本。观察你在多重身份间的真实工作流向——不评判，只记录。"
-            : "An AI-assisted time ledger you own. It watches how your work flows across the identities you switch between — witnessing, not judging."}
-        </p>
-
-        <div className="flex flex-wrap justify-center gap-3">
+      {/* Install hero CTA — mirrors ROAM's \"Ask ROAM\" accent box */}
+      <div className="rounded-xl border-2 border-[var(--accent)]/40 bg-[var(--accent)]/5 p-5 mb-10">
+        <div className="flex flex-wrap items-start gap-3 justify-between mb-3">
+          <div>
+            <p className="font-semibold text-[var(--text)] mb-1">
+              {zh ? "一键安装 · Install" : "Install · 一键安装"}
+            </p>
+            <p className="text-sm text-[var(--muted)]">
+              {zh
+                ? "macOS 15+ · Python 3.11+ · 需要一个 Anthropic API key · 约 2 分钟"
+                : "macOS 15+ · Python 3.11+ · needs an Anthropic API key · ~2 minutes"}
+            </p>
+          </div>
           <a
             href={GH}
-            className="px-5 py-2 rounded-md bg-[var(--accent)] text-white text-sm font-medium no-underline hover:opacity-90 transition-opacity"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-4 py-1.5 rounded-md bg-[var(--accent)] text-white text-sm font-medium no-underline hover:opacity-90 transition-opacity whitespace-nowrap"
           >
             {zh ? "GitHub 仓库 →" : "GitHub repo →"}
           </a>
-          <a
-            href="#install"
-            className="px-5 py-2 rounded-md border border-[var(--border)] bg-[var(--card-bg)] text-sm font-medium no-underline text-[var(--text)] hover:bg-[var(--badge-bg)] transition-colors"
-          >
-            {zh ? "一键安装" : "Install"}
-          </a>
         </div>
-      </section>
+        <pre className="rounded-lg bg-[var(--card-bg)] border border-[var(--border)] p-3 text-xs overflow-x-auto font-mono leading-relaxed text-[var(--text)]">
+{`git clone https://github.com/AutoZYX/chronicler ~/projects/chronicle
+bash ~/projects/chronicle/scripts/install.sh`}
+        </pre>
+      </div>
 
-      {/* ─────────── Hero feature: sample output ─────────── */}
-      <section className="mb-14">
-        <div className="rounded-xl border-2 border-[var(--accent)]/30 bg-[var(--accent)]/5 overflow-hidden">
-          <div className="px-5 pt-5 pb-4">
-            <div className="flex items-center justify-between mb-1">
-              <div className="text-sm font-semibold text-[var(--text)]">
-                {zh ? "昨天一小时的样子" : "What an hour looks like"}
-              </div>
-              <div className="text-xs text-[var(--muted)] font-mono">
-                Inferred / 2026-04-20.md
-              </div>
-            </div>
-            <div className="text-xs text-[var(--muted)]">
-              {zh
-                ? "每晚 23:35，Claude Opus 读过去 24 小时事件流 + 你的 OKR 文件，产出双语分段。"
-                : "Every night at 23:35, Claude Opus reads the day's event stream plus your OKR file and produces bilingual segments."}
-            </div>
-          </div>
-          <pre className="mx-0 mb-0 rounded-none bg-[#1a1a18] text-[#ece5d4] px-5 py-4 text-xs leading-relaxed overflow-x-auto font-mono">
-            {SAMPLE_OUTPUT}
-          </pre>
-        </div>
-      </section>
-
-      {/* ─────────── What it is ─────────── */}
-      <section className="mb-12">
+      {/* Section: What it is */}
+      <section className="mb-10">
         <h2 className="text-xl mb-3">{zh ? "这是什么" : "What it is"}</h2>
+        <div className="space-y-3 text-sm leading-relaxed">
+          <div className="rounded-lg border border-[var(--border)] bg-[var(--card-bg)] p-4">
+            <p className="font-semibold mb-1">
+              {zh ? "多身份感知" : "Multi-identity aware"}
+            </p>
+            <p className="text-[var(--muted)]">
+              {zh
+                ? "学者 / 工程师 / 创始人 / 家长 在同一天切换——AI 通过你的应用、窗口标题、时间模式自动识别。忘记手动切换也没关系。"
+                : "Professor / engineer / founder / parent across a single day — AI infers which is which from app usage, window titles, and time patterns. You don't have to remember to switch manually."}
+            </p>
+          </div>
+          <div className="rounded-lg border border-[var(--border)] bg-[var(--card-bg)] p-4">
+            <p className="font-semibold mb-1">
+              {zh ? "本地优先" : "Local-first"}
+            </p>
+            <p className="text-[var(--muted)]">
+              {zh
+                ? "原始事件（你打开过的应用与窗口标题）留在本机 SQLite，永不上云。只有派生摘要过网络到 Claude API。"
+                : "Raw events (which apps and window titles) stay in a local SQLite file and never leave your Mac. Only derived summaries cross the network to the Claude API."}
+            </p>
+          </div>
+          <div className="rounded-lg border border-[var(--border)] bg-[var(--card-bg)] p-4">
+            <p className="font-semibold mb-1">
+              {zh ? "目标对齐（不评分）" : "Goal-aware (never scoring)"}
+            </p>
+            <p className="text-[var(--muted)]">
+              {zh
+                ? "读你写下的 life_goals.md——季度 OKR、年度目标、5 年愿景、长期 commitments。每晚的 digest 会描述时间分配与目标的关系，但永远不评价。"
+                : "Reads your life_goals.md — quarterly OKRs, annual goals, 5-year vision, long-term commitments. Nightly digests describe how time relates to goals, but never evaluate."}
+            </p>
+          </div>
+          <div className="rounded-lg border border-[var(--border)] bg-[var(--card-bg)] p-4">
+            <p className="font-semibold mb-1">
+              {zh ? "每月 $1–6" : "$1–6 per month"}
+            </p>
+            <p className="text-[var(--muted)]">
+              {zh
+                ? "Claude Opus 4.7 + Anthropic prompt caching · $10 / 月硬性预算上限 · 超预算自动降级到本地关键词分类。"
+                : "Claude Opus 4.7 with Anthropic prompt caching · hard $10/mo budget cap · graceful degradation to a local keyword classifier if the cap is hit."}
+            </p>
+          </div>
+        </div>
+      </section>
 
-        <p className="text-sm text-[var(--text)] mb-4 leading-relaxed">
-          {zh ? (
-            <>
-              一个 macOS 开源工具。每 30 秒记录你的前台应用 + 窗口标题，
-              加上你写下的季度 OKR，每晚让 Claude 把这一天切成带置信度的身份时段，
-              并产出中英双语叙事——存进你自己的 Obsidian 仓库。
-            </>
-          ) : (
-            <>
-              A macOS open-source tool. Every 30s, it records the frontmost app and
-              window title. Combined with the quarterly OKRs you&apos;ve written, Claude
-              slices each day into confidence-scored identity segments overnight and
-              writes bilingual narratives — into your own Obsidian vault.
-            </>
-          )}
+      {/* Section: Sample output */}
+      <section className="mb-10">
+        <h2 className="text-xl mb-3">
+          {zh ? "一段一小时的样子" : "What an hour looks like"}
+        </h2>
+        <p className="text-sm leading-relaxed text-[var(--muted)] mb-3">
+          {zh
+            ? "每晚 23:35，Claude Opus 读过去 24 小时事件流 + 你的 OKR 文件，产出双语分段。落到 Obsidian 的 Markdown 文件里——iCloud 同步，iOS Obsidian 可读。"
+            : "Each night at 23:35, Claude Opus reads the day's event stream plus your OKR file and emits bilingual segments. Written as Markdown into your Obsidian vault — iCloud-synced, iOS-readable."}
         </p>
+        <pre className="rounded-lg bg-[var(--badge-bg)] p-4 text-xs overflow-x-auto font-mono leading-relaxed">
+          {SAMPLE_OUTPUT}
+        </pre>
+        <p className="text-xs text-[var(--muted)] mt-2 font-mono">
+          Inferred / 2026-04-20.md
+        </p>
+      </section>
 
-        <ul className="list-disc list-outside ml-5 space-y-1.5 text-sm text-[var(--muted)]">
+      {/* Section: How it works */}
+      <section className="mb-10">
+        <h2 className="text-xl mb-3">{zh ? "工作流程" : "How it works"}</h2>
+        <ul className="list-disc list-inside text-sm space-y-1.5 text-[var(--muted)]">
           <li>
+            <span className="text-[var(--text)] font-medium">
+              {zh ? "采集（Collect）—" : "Collect —"}
+            </span>{" "}
             {zh
-              ? "多身份感知：学者 / 工程师 / 创始人 / 家长在同一天切换，AI 自动识别"
-              : "Multi-identity aware: professor / engineer / founder / parent in one day — AI figures out which is which"}
+              ? "每 30s 记录前台应用 + 窗口标题到本机 SQLite。用户超过 5 分钟无操作自动暂停。"
+              : "every 30s, record the frontmost app + window title to local SQLite. Auto-pauses after 5 min of inactivity."}
           </li>
           <li>
+            <span className="text-[var(--text)] font-medium">
+              {zh ? "锚点（可选）—" : "Optional anchors —"}
+            </span>{" "}
             {zh
-              ? "本地优先：原始事件留在本机 SQLite；只有派生摘要过网到 Claude"
-              : "Local-first: raw events stay in local SQLite; only derived summaries cross the network"}
+              ? "ws jlu / zyt / dr / life 手动声明身份——作为高权重锚点，但不必每次都切。"
+              : "ws jlu / zyt / dr / life as high-weight hints for the classifier. Never required."}
           </li>
           <li>
+            <span className="text-[var(--text)] font-medium">
+              {zh ? "分类（Classify）—" : "Classify —"}
+            </span>{" "}
             {zh
-              ? "目标对齐：读你的 life_goals.md，把时间分配与长期 OKR 做描述性关联（不评分）"
-              : "Goal-aware: reads your life_goals.md and describes how time relates to your OKRs (never scoring)"}
+              ? "每晚一次，Claude Opus 读过去 24h 事件流 + 手动锚点 + OKR 文件，切成带置信度的身份时段。"
+              : "nightly, Claude Opus reads the 24h event stream + anchors + OKR file, emits time segments with confidence."}
           </li>
           <li>
+            <span className="text-[var(--text)] font-medium">
+              {zh ? "叙事（Reflect）—" : "Reflect —"}
+            </span>{" "}
             {zh
-              ? "每月成本 $1–6：Opus 4.7 + prompt caching + $10 月度预算硬上限"
-              : "Costs $1–6/month: Opus 4.7 + prompt caching + hard $10/mo budget cap"}
+              ? "写入你的 Obsidian：每日 digest、离场卡片、周报——中文在上，英文在下。"
+              : "writes to your Obsidian: daily digests, exit cards, weekly rollups — bilingual, Chinese first."}
           </li>
         </ul>
       </section>
 
-      {/* ─────────── Install ─────────── */}
-      <section id="install" className="mb-12">
-        <h2 className="text-xl mb-3">{zh ? "安装" : "Install"}</h2>
-
-        <p className="text-sm text-[var(--muted)] mb-3">
-          {zh
-            ? "单命令，约 2 分钟。要求 macOS 15+、Python 3.11+、Anthropic API key。"
-            : "One command, ~2 minutes. Requires macOS 15+, Python 3.11+, an Anthropic API key."}
-        </p>
-
-        <pre className="rounded-lg bg-[var(--badge-bg)] p-4 text-xs overflow-x-auto font-mono leading-relaxed">
-{`git clone https://github.com/AutoZYX/chronicler ~/projects/chronicle
-bash ~/projects/chronicle/scripts/install.sh
-
-# then add to ~/.zshrc:
-export ANTHROPIC_API_KEY="sk-ant-..."
-alias ws="$HOME/projects/chronicle/.venv/bin/ws"`}
-        </pre>
-
-        <p className="text-xs text-[var(--muted)] mt-3">
-          {zh
-            ? "脚本会创建 venv、pip install、初始化本地 SQLite、写入 launchd agents（collector + menu bar + ambient widget）开机自启。"
-            : "The script creates a venv, pip installs, initializes local SQLite, and registers launchd agents (collector + menu bar + ambient widget) to start at login."}
-        </p>
-      </section>
-
-      {/* ─────────── A different kind of Chronicle ─────────── */}
-      <section className="mb-12">
+      {/* Section: Different from OpenAI's Chronicle */}
+      <section className="mb-10">
         <h2 className="text-xl mb-3">
           {zh
             ? "和 OpenAI Chronicle 的不同"
             : "A different kind of Chronicle"}
         </h2>
-
-        <p className="text-sm text-[var(--muted)] mb-4">
-          {zh ? (
-            <>
-              2026-04 OpenAI 在 Codex 里发布了一个同名的「Chronicle」——读你的屏幕，
-              目的是让 Codex 更好地替你写代码。两个产品同名，但意图、
-              哲学、归属完全不同。
-            </>
-          ) : (
-            <>
-              In April 2026 OpenAI shipped a feature also called &ldquo;Chronicle&rdquo;
-              inside Codex — it reads your screen so Codex can write code for you.
-              Same word, different intent, different philosophy.
-            </>
-          )}
+        <p className="text-sm leading-relaxed text-[var(--muted)] mb-3">
+          {zh
+            ? "2026-04 OpenAI 在 Codex 里发布了一个同名的「Chronicle」——读你的屏幕，目的是让 Codex 更好地替你写代码。两个产品同名，但意图、哲学、归属完全不同。"
+            : "In April 2026 OpenAI shipped a feature also called \u201cChronicle\u201d inside Codex — it reads your screen so Codex can write code for you. Same word, different intent, different philosophy."}
         </p>
-
-        <ul className="list-disc list-outside ml-5 space-y-1.5 text-sm text-[var(--muted)]">
+        <ul className="list-disc list-inside text-sm space-y-1.5 text-[var(--muted)]">
           <li>
             <span className="text-[var(--text)] font-medium">
-              {zh ? "他们替你做事；这个替你看见。" : "Theirs acts for you. This one witnesses for you."}
+              {zh ? "替你做事 vs 替你看见" : "Acts for you vs. witnesses for you"}
             </span>
-            {" "}
+            {" — "}
             {zh
-              ? "（柳比歇夫传统 · 观察，不评判）"
-              : "(Lyubishchev tradition — observation, never judgment)"}
+              ? "他们优化 Codex 的上下文推断；这个继承柳比歇夫传统，观察而不评判。"
+              : "theirs optimizes Codex's context inference; this inherits Lyubishchev's tradition — observation, not evaluation."}
           </li>
           <li>
             <span className="text-[var(--text)] font-medium">
-              {zh ? "他们云端为主，未加密；这个本地优先。" : "Theirs is cloud-first, not encrypted at rest. This one is local-first."}
+              {zh ? "云端 vs 本地优先" : "Cloud vs. local-first"}
             </span>
-            {" "}
-            {zh ? "只有派生摘要过网。" : "Only derived summaries cross the wire."}
+            {" — "}
+            {zh
+              ? "他们云端为主且未加密；这个的原始事件永不离开你的 Mac。"
+              : "theirs is cloud-first and unencrypted at rest; this one never lets raw events leave your Mac."}
           </li>
           <li>
             <span className="text-[var(--text)] font-medium">
-              {zh ? "他们 $200/月封闭；这个 AGPLv3 开源。" : "Theirs: closed, $200/mo. This one: AGPLv3, free."}
+              {zh ? "封闭 $200/月 vs AGPLv3 开源" : "Closed at $200/mo vs. AGPLv3"}
             </span>
-            {" "}
-            {zh ? "你付自己的 LLM 账单，约 $1-6/月。" : "You pay your own LLM bill — roughly $1–6/mo."}
+            {" — "}
+            {zh
+              ? "你付自己的 LLM 账单（约 $1–6/月），代码在 GitHub 公开。"
+              : "you pay your own LLM bill (~$1–6/mo); the code lives open on GitHub."}
           </li>
           <li>
             <span className="text-[var(--text)] font-medium">
-              {zh ? "他们欧盟/英国/瑞士未发售；这个任何地方能用。" : "Theirs isn&apos;t available in EU/UK/CH. This one works anywhere."}
+              {zh ? "欧盟/英国/瑞士未发售 vs 任何地方可用" : "Not in EU/UK/CH vs. available anywhere"}
             </span>
+            {" — "}
+            {zh
+              ? "中文与东亚用户、在英国访学的人，现在就能用。"
+              : "Chinese + East-Asian users, UK-based academics — usable today."}
           </li>
         </ul>
-
-        <p className="text-xs text-[var(--muted)] mt-3">
-          <Link href="/about" className="text-[var(--accent)] hover:underline">
+        <p className="text-sm text-[var(--muted)] mt-4">
+          <Link
+            href="/about"
+            className="text-[var(--accent)] hover:underline no-underline"
+          >
             {zh ? "了解背后的哲学 →" : "Read the philosophy behind this →"}
           </Link>
         </p>
       </section>
 
-      {/* ─────────── Footer links / read more ─────────── */}
-      <section className="mb-4 pt-6 border-t border-[var(--border)]">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
-          <Link
-            href="/about"
-            className="no-underline text-[var(--text)] hover:text-[var(--accent)] transition-colors"
-          >
-            <div className="font-semibold mb-1">
-              {zh ? "关于 · 背后的哲学" : "About · the philosophy"}
-            </div>
-            <div className="text-xs text-[var(--muted)]">
-              {zh
-                ? "柳比歇夫 · 观察不评判 · 第三探索 · 三种公开模式"
-                : "Lyubishchev · observation vs judgment · 3rdX · three privacy modes"}
-            </div>
-          </Link>
-          <Link
-            href="/architecture"
-            className="no-underline text-[var(--text)] hover:text-[var(--accent)] transition-colors"
-          >
-            <div className="font-semibold mb-1">
-              {zh ? "架构 · 四层管线" : "Architecture · four-layer pipeline"}
-            </div>
-            <div className="text-xs text-[var(--muted)]">
-              {zh
-                ? "采集 → 存储 → 推断 → 呈现"
-                : "Collect → store → infer → present"}
-            </div>
-          </Link>
-          <a
-            href={GH}
-            target="_blank"
-            rel="noopener"
-            className="no-underline text-[var(--text)] hover:text-[var(--accent)] transition-colors"
-          >
-            <div className="font-semibold mb-1">GitHub →</div>
-            <div className="text-xs text-[var(--muted)]">
-              {zh ? "源码 · 文档 · 路线图 · Issues" : "Source · docs · roadmap · issues"}
-            </div>
-          </a>
-        </div>
+      {/* Section: License & contributing */}
+      <section className="mb-10">
+        <h2 className="text-xl mb-3">
+          {zh ? "开源 · 贡献" : "Open source · contributing"}
+        </h2>
+        <p className="text-sm leading-relaxed text-[var(--muted)]">
+          {zh ? (
+            <>
+              软件代码{" "}
+              <a
+                href={GH}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[var(--accent)] hover:underline"
+              >
+                GitHub · AutoZYX/chronicler
+              </a>
+              （AGPLv3）。欢迎 Issue 反馈、PR 贡献、修正 classifier 的分类逻辑。
+              学术合作 / 媒体咨询联系{" "}
+              <a
+                href="mailto:hello@autozyx.com"
+                className="text-[var(--accent)] hover:underline"
+              >
+                hello@autozyx.com
+              </a>
+              。
+            </>
+          ) : (
+            <>
+              Source on{" "}
+              <a
+                href={GH}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[var(--accent)] hover:underline"
+              >
+                GitHub · AutoZYX/chronicler
+              </a>{" "}
+              (AGPLv3). Issues, PRs, and classifier-logic improvements welcome.
+              For academic or press inquiries:{" "}
+              <a
+                href="mailto:hello@autozyx.com"
+                className="text-[var(--accent)] hover:underline"
+              >
+                hello@autozyx.com
+              </a>
+              .
+            </>
+          )}
+        </p>
       </section>
     </div>
   );
