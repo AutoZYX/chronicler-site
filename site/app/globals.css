@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #faf9f5;
+  --text: #1a1a18;
+  --accent: #C65D3E;
+  --accent-light: #e8a08c;
+  --border: #e0ded6;
+  --card-bg: #ffffff;
+  --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --muted: #6b6960;
+  --badge-bg: #f0eeea;
+  --radius: 10px;
+
+  /* Four identity accents, reused in the accent-bar motif */
+  --acc-jlu:  #8B6F47;
+  --acc-zyt:  #2C5F7E;
+  --acc-dr:   #C65D3E;
+  --acc-life: #6B8E4E;
+}
+
+@theme inline {
+  --color-background: var(--bg);
+  --color-foreground: var(--text);
+  --color-accent: var(--accent);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-card: var(--card-bg);
+}
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-variant-numeric: tabular-nums;
+}
+
+h1, h2, h3, h4 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Small identity accent bar — used in hero + architecture diagram */
+.accent-bar {
+  display: inline-flex;
+  height: 3px;
+  width: 56px;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.accent-bar > span { flex: 1; display: block; }

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" font-family="-apple-system, 'Inter', sans-serif">
+  <!-- Chronicle — System Architecture -->
+
+  <style>
+    .paper { fill: #faf8f3; }
+    .band  { fill: #f4efe4; stroke: #cec5b4; stroke-width: 1.5; }
+    .card  { fill: #ffffff; stroke: #8a857c; stroke-width: 1.25; rx: 8; }
+    .card-muted { fill: #faf8f3; stroke: #b7ad9a; stroke-width: 1; rx: 6; }
+    .title { font-size: 28px; font-weight: 700; fill: #1f1d1a; font-family: 'Newsreader','New York','Charter',Georgia,serif; }
+    .layer { font-size: 15px; font-weight: 600; fill: #5b564d; letter-spacing: 0.04em; text-transform: uppercase; }
+    .layer-zh { font-size: 14px; fill: #857c6c; }
+    .label { font-size: 14px; fill: #1f1d1a; font-weight: 600; }
+    .sub   { font-size: 11px; fill: #5b564d; }
+    .mono  { font-family: 'SF Mono','Menlo',monospace; font-size: 11px; fill: #5b564d; }
+    .acc-jlu  { fill: #8B6F47; }
+    .acc-zyt  { fill: #2C5F7E; }
+    .acc-dr   { fill: #C65D3E; }
+    .acc-life { fill: #6B8E4E; }
+    .arrow { stroke: #5b564d; stroke-width: 1.5; fill: none; }
+    .arrow-head { fill: #5b564d; }
+    .caption { font-size: 12px; fill: #857c6c; font-style: italic; }
+  </style>
+
+  <rect class="paper" width="1200" height="820"/>
+
+  <!-- Header -->
+  <text x="600" y="48" class="title" text-anchor="middle">Chronicle — System Architecture</text>
+  <text x="600" y="70" class="caption" text-anchor="middle">从采集到呈现的四层管线 · Four-layer pipeline: collect → store → infer → present</text>
+
+  <!-- Layer 1: Collection -->
+  <rect class="band" x="60" y="100" width="1080" height="130" rx="10"/>
+  <text x="80" y="130" class="layer">1 · Collection</text>
+  <text x="80" y="148" class="layer-zh">采集层</text>
+
+  <g transform="translate(330,128)">
+    <rect class="card" width="200" height="82" />
+    <text x="100" y="26" class="label" text-anchor="middle">Menu bar</text>
+    <text x="100" y="44" class="sub" text-anchor="middle">rumps · 1-click switch</text>
+    <text x="100" y="62" class="sub" text-anchor="middle">opens Lobby / Vault / Digest</text>
+    <text x="100" y="76" class="mono" text-anchor="middle">chronicle.menubar</text>
+  </g>
+
+  <g transform="translate(560,128)">
+    <rect class="card" width="200" height="82"/>
+    <text x="100" y="26" class="label" text-anchor="middle">Ambient Widget (v2)</text>
+    <text x="100" y="44" class="sub" text-anchor="middle">48×240 peek ⇌ 320×420</text>
+    <text x="100" y="62" class="sub" text-anchor="middle">hover expand + ceremony</text>
+    <text x="100" y="76" class="mono" text-anchor="middle">chronicle.lobby_v2</text>
+  </g>
+
+  <g transform="translate(790,128)">
+    <rect class="card" width="200" height="82"/>
+    <text x="100" y="26" class="label" text-anchor="middle">Collector daemon</text>
+    <text x="100" y="44" class="sub" text-anchor="middle">30s poll · frontmost app</text>
+    <text x="100" y="62" class="sub" text-anchor="middle">+ idle detection (5min)</text>
+    <text x="100" y="76" class="mono" text-anchor="middle">chronicle.collector</text>
+  </g>
+
+  <!-- Down arrow -->
+  <path class="arrow" d="M 600 240 L 600 280" />
+  <polygon class="arrow-head" points="594,276 606,276 600,286" />
+
+  <!-- Layer 2: Storage -->
+  <rect class="band" x="60" y="290" width="1080" height="140" rx="10"/>
+  <text x="80" y="320" class="layer">2 · Storage</text>
+  <text x="80" y="338" class="layer-zh">存储层</text>
+
+  <g transform="translate(330,310)">
+    <rect class="card" width="790" height="100" />
+    <text x="395" y="24" class="label" text-anchor="middle">SQLite · ~/.chronicle/chronicle.db</text>
+    <text x="395" y="40" class="sub" text-anchor="middle">local-first · WAL mode · zero config</text>
+
+    <g transform="translate(18,54)">
+      <rect class="card-muted" width="115" height="36" />
+      <text x="57" y="16" class="mono" text-anchor="middle" fill="#1f1d1a">events</text>
+      <text x="57" y="29" class="mono" text-anchor="middle">raw 30s polls</text>
+    </g>
+    <g transform="translate(143,54)">
+      <rect class="card-muted" width="115" height="36" />
+      <text x="57" y="16" class="mono" text-anchor="middle" fill="#1f1d1a">sessions</text>
+      <text x="57" y="29" class="mono" text-anchor="middle">manual switches</text>
+    </g>
+    <g transform="translate(268,54)">
+      <rect class="card-muted" width="75" height="36" />
+      <text x="37" y="16" class="mono" text-anchor="middle" fill="#1f1d1a">state</text>
+      <text x="37" y="29" class="mono" text-anchor="middle">current ctx</text>
+    </g>
+    <g transform="translate(353,54)">
+      <rect class="card-muted" width="135" height="36" />
+      <text x="67" y="16" class="mono" text-anchor="middle" fill="#1f1d1a">inferred_segments</text>
+      <text x="67" y="29" class="mono" text-anchor="middle">AI-classified</text>
+    </g>
+    <g transform="translate(498,54)">
+      <rect class="card-muted" width="140" height="36" />
+      <text x="70" y="16" class="mono" text-anchor="middle" fill="#1f1d1a">classifier_corrections</text>
+      <text x="70" y="29" class="mono" text-anchor="middle">few-shot feedback</text>
+    </g>
+    <g transform="translate(648,54)">
+      <rect class="card-muted" width="124" height="36" />
+      <text x="62" y="16" class="mono" text-anchor="middle" fill="#1f1d1a">llm_calls</text>
+      <text x="62" y="29" class="mono" text-anchor="middle">token usage + cost</text>
+    </g>
+  </g>
+
+  <path class="arrow" d="M 600 440 L 600 480" />
+  <polygon class="arrow-head" points="594,476 606,476 600,486" />
+
+  <!-- Layer 3: Intelligence -->
+  <rect class="band" x="60" y="490" width="1080" height="130" rx="10"/>
+  <text x="80" y="520" class="layer">3 · Intelligence</text>
+  <text x="80" y="538" class="layer-zh">智能层</text>
+
+  <g transform="translate(280,515)">
+    <rect class="card" width="230" height="92" />
+    <text x="115" y="26" class="label" text-anchor="middle">AI Classifier</text>
+    <text x="115" y="44" class="sub" text-anchor="middle">Claude Opus 4.7</text>
+    <text x="115" y="62" class="sub" text-anchor="middle">3-block prompt · caching</text>
+    <text x="115" y="80" class="mono" text-anchor="middle">chronicle.classifier</text>
+  </g>
+
+  <g transform="translate(540,515)">
+    <rect class="card" width="200" height="92" />
+    <text x="100" y="26" class="label" text-anchor="middle">Heuristic fallback</text>
+    <text x="100" y="44" class="sub" text-anchor="middle">keyword match only</text>
+    <text x="100" y="62" class="sub" text-anchor="middle">zero LLM cost</text>
+    <text x="100" y="80" class="mono" text-anchor="middle">chronicle.heuristic</text>
+  </g>
+
+  <g transform="translate(770,515)">
+    <rect class="card" width="200" height="92" />
+    <text x="100" y="26" class="label" text-anchor="middle">Budget cap</text>
+    <text x="100" y="44" class="sub" text-anchor="middle">$10 / month · hard limit</text>
+    <text x="100" y="62" class="sub" text-anchor="middle">auto fallback when hit</text>
+    <text x="100" y="80" class="mono" text-anchor="middle">chronicle.budget</text>
+  </g>
+
+  <path class="arrow" d="M 600 630 L 600 670" />
+  <polygon class="arrow-head" points="594,666 606,666 600,676" />
+
+  <!-- Layer 4: Presentation -->
+  <rect class="band" x="60" y="680" width="1080" height="110" rx="10"/>
+  <text x="80" y="710" class="layer">4 · Presentation</text>
+  <text x="80" y="728" class="layer-zh">输出层</text>
+
+  <g transform="translate(290,698)">
+    <rect class="card" width="170" height="78" />
+    <rect x="0" y="0" width="4" height="78" class="acc-jlu" />
+    <text x="85" y="26" class="label" text-anchor="middle">Exit card toast</text>
+    <text x="85" y="44" class="sub" text-anchor="middle">slide-in · 5s fade</text>
+    <text x="85" y="62" class="sub" text-anchor="middle">click → Obsidian</text>
+  </g>
+  <g transform="translate(470,698)">
+    <rect class="card" width="170" height="78" />
+    <rect x="0" y="0" width="4" height="78" class="acc-zyt" />
+    <text x="85" y="26" class="label" text-anchor="middle">Inferred segments</text>
+    <text x="85" y="44" class="sub" text-anchor="middle">bilingual Markdown</text>
+    <text x="85" y="62" class="sub" text-anchor="middle">daily in vault</text>
+  </g>
+  <g transform="translate(650,698)">
+    <rect class="card" width="170" height="78" />
+    <rect x="0" y="0" width="4" height="78" class="acc-dr" />
+    <text x="85" y="26" class="label" text-anchor="middle">Daily digest</text>
+    <text x="85" y="44" class="sub" text-anchor="middle">bilingual narrative</text>
+    <text x="85" y="62" class="sub" text-anchor="middle">goals-aware</text>
+  </g>
+  <g transform="translate(830,698)">
+    <rect class="card" width="170" height="78" />
+    <rect x="0" y="0" width="4" height="78" class="acc-life" />
+    <text x="85" y="26" class="label" text-anchor="middle">Weekly digest</text>
+    <text x="85" y="44" class="sub" text-anchor="middle">trend across days</text>
+    <text x="85" y="62" class="sub" text-anchor="middle">Obsidian + iCloud</text>
+  </g>
+
+  <text x="600" y="804" class="caption" text-anchor="middle">All markdown outputs → Obsidian vault (iCloud) · All raw events stay on-device (local-first)</text>
+</svg>
