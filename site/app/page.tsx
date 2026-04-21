@@ -9,78 +9,81 @@ const NOTIFY = "mailto:hello@autozyx.com?subject=Chronicler%20v0.1%20launch%20no
 
 const SAMPLE_OUTPUT = `Day: 2026-04-15 · Tuesday · a multi-identity day
 
-07:15 – 08:45   🌿 life     ●●●      90 min
+07:15 – 08:45   🌿 life       ●●●      90 min
 Morning routine — breakfast, school drop, walk back
-早晨——早餐、送娃上学、步行回家
+早晨例行——早餐、送娃上学、步行回家
 
 ───────────────────────────────────────────────
 
-09:02 – 11:38   🎓 jlu      ●●●     156 min
-NSFC proposal revision — first focused block in two weeks
-基金申请修订——两周来第一个集中块
+09:02 – 11:38   🎓 research   ●●●     156 min
+Grant proposal revision — first focused block in two weeks
+课题申请修订——两周来第一个集中块
 
-— Overleaf · nsfc_proposal.tex            98 min
+— Overleaf · proposal.tex                   98 min
   Overleaf 改提案正文
-— arXiv · priors cross-check              22 min
+— Literature cross-check                    22 min
   查相关先验文献
-— Email with co-author                     16 min
+— Email with co-author                      16 min
   和合作者邮件沟通
-— Student WeChat reply                      8 min
-  给学生微信回复
+— Student DM reply                           8 min
+  给学生简短回复
 
 Hanging · 未完事项
-  · 4.2 节 discussion 还差一段——明天接着写
-    Section 4.2 discussion needs one more paragraph
+  · Discussion section 还差一段——明天接着写
+    Discussion section needs one more paragraph
 
 ───────────────────────────────────────────────
 
-11:40 – 12:20   🌿 life     ●●○      40 min
-Lunch + family WeChat group
-午饭 + 家人群闲聊
+11:40 – 12:20   🌿 life       ●●○      40 min
+Lunch + family chat
+午饭 + 家人闲聊
 
-12:55 – 14:20   🛡 zyt      ●●○      85 min
-Async safety-team — SOTIF weekly + OEM memo v3
-异步安全团队时段——SOTIF 周会笔记 + OEM 备忘录
+12:55 – 14:20   🛡 safety     ●●○      85 min
+Async team block — weekly review + client memo v3
+异步团队时段——周会笔记 + 客户备忘录 v3
 
-Hanging · OEM memo v3 结论章节未完
-         memo v3 conclusion still pending
+Hanging · Memo v3 结论章节未完
+         Memo v3 conclusion still pending
 
-14:25 – 14:50   ✈️ dr       ●●○      25 min
-Founder interjection — LinkedIn draft + partner ping
-创始人短时插入——LinkedIn 起草 + 合作方跟进
+14:25 – 14:50   ✈️ founder    ●●○      25 min
+Founder interjection — blog draft + partner ping
+创始人短时插入——博客起草 + 合作方跟进
 
-15:10 – 17:30   🌿 life     ●●●     140 min
-Kid pickup → park (engineering trucks) → dinner
-接娃 → 公园（他在玩工程车）→ 晚饭
+15:10 – 17:30   🌿 life       ●●●     140 min
+Kid pickup → park → dinner
+接娃 → 公园 → 晚饭
 
-20:15 – 21:40   ✈️ dr       ●●●      85 min
-After-kid founder block — NDS platform UX polish
-娃睡后创始人时段——NDS 平台 UX 打磨
+20:15 – 21:40   ✈️ founder    ●●●      85 min
+After-kid founder block — platform UX polish
+娃睡后创始人时段——产品 UX 打磨
 
-— Claude Code · frontend refactor         58 min
-  用 Claude Code 重构前端
-— GitHub · 3 PRs review & merge           18 min
+— IDE · frontend refactor                   58 min
+  IDE 重构前端
+— GitHub · 3 PRs review & merge             18 min
   review 并合并 3 个 PR
 
-21:45 – 22:30   🎓 jlu      ●●○      45 min
-Bedtime — paper browsing, 2 ideas jotted for tomorrow's 4.2
-睡前翻论文，记下 2 个明天 4.2 章节用的想法
+21:45 – 22:30   🎓 research   ●●○      45 min
+Bedtime — paper browsing, 2 ideas jotted for tomorrow
+睡前翻论文，记下 2 个明天用的想法
 
 ═══════════════════════════════════════════════
 
 Summary · 一天总览
 
-  🎓 jlu   201 min / 3h 21m   NSFC 推进 + 睡前阅读
-  🛡 zyt    85 min / 1h 25m   SOTIF 周会 + OEM 备忘录
-  ✈️ dr    110 min / 1h 50m   NDS UX + 合作跟进 + 内容
-  🌿 life  270 min / 4h 30m   早晨 + 接送 + 家庭时间
+  🎓 research  201 min / 3h 21m   Grant writing + bedtime reading
+  🛡 safety     85 min / 1h 25m   Weekly review + client memo
+  ✈️ founder  110 min / 1h 50m   Platform UX + partner + content
+  🌿 life     270 min / 4h 30m   Morning + pickup + family
 
   Total observed: 666 min / 11h 06m
 
   Cross-day threads · 跨天主线
-    · NSFC 4.2 discussion (yesterday → today → tomorrow)
-    · OEM memo v3 conclusion (started today, pending)
-    · Bedtime notes feed tomorrow's focus block`;
+    · Grant discussion (yesterday → today → tomorrow)
+    · Client memo v3 conclusion (started today, pending)
+    · Bedtime notes feed tomorrow's focus block
+
+* identity keys (research / safety / founder / life) are user-configurable
+  身份 key 完全由用户自定义，此处为虚构示例`;
 
 export default function Home() {
   const { lang } = useLang();
