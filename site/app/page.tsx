@@ -114,6 +114,20 @@ export default function Home() {
             : "Observes your work across the identities you switch between. Writes bilingual daily digests into your Obsidian vault. Witnessing, never judging. Lyubishchev's time-accounting method, made nearly free by AI."}
         </p>
 
+        <p
+          className="tagline"
+          style={{
+            color: "var(--muted)",
+            fontSize: "0.95rem",
+            fontStyle: "italic",
+            marginTop: -4,
+          }}
+        >
+          {zh
+            ? "不替你写代码。不喂别的 Agent。它给你——多身份知识工作者——写每日简报。"
+            : "Not for AI. Not for Agents. For you — the multi-identity knowledge worker — written into your inbox every night."}
+        </p>
+
         <div className="hero-buttons">
           <a
             href={GH_TOOL}
@@ -280,24 +294,48 @@ export default function Home() {
           </p>
         </section>
 
-        {/* ═══════════════════════════ vs OpenAI Chronicle ═══════════════════════════ */}
+        {/* ═══════════════════════════ Three Chronicles ═══════════════════════════ */}
         <section className="divider">
           <h2 className="section-title">
             {zh
-              ? "和 OpenAI Chronicle 的不同"
-              : "A different kind of Chronicle"}
+              ? "三种 Chronicle · 三种哲学"
+              : "Three Chronicles, three philosophies"}
           </h2>
           <p
             style={{
               color: "var(--muted)",
               fontSize: "1rem",
               marginBottom: 20,
-              maxWidth: 720,
+              maxWidth: 760,
             }}
           >
-            {zh
-              ? "2026-04-21 当天，OpenAI 在 Codex 里发布了一个同名的「Chronicle」——读你的屏幕，目的是让 Codex 更好地替你写代码。同名，但意图、哲学、归属完全相反。"
-              : "On 2026-04-21, OpenAI shipped a feature also called \u201cChronicle\u201d inside Codex — it reads your screen so Codex can write code for you. Same word, opposite philosophy."}
+            {zh ? (
+              <>
+                2026-04-20 OpenAI 在 Codex 里发布了同名的「Chronicle」（让 AI 替你写代码）；48 小时后，Vida 团队发布了「
+                <a
+                  href="https://github.com/Einsia/OpenChronicle"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  OpenChronicle
+                </a>
+                」（把记忆做成可被任意 Agent 调用的基础设施）。同样是「读屏幕」，但所在层、目标用户、输出形式完全不同。Chronicler 是其中第三条路：不喂 AI · 不替你做 ·{" "}
+                <strong>给你写每日简报</strong>。
+              </>
+            ) : (
+              <>
+                On 2026-04-20 OpenAI shipped a feature called {"“"}Chronicle{"”"} inside Codex (lets AI write code for you). 48 hours later, the Vida team released{" "}
+                <a
+                  href="https://github.com/Einsia/OpenChronicle"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  OpenChronicle
+                </a>{" "}
+                (turns memory into infrastructure for any AI agent). Same idea of {"“"}reading the screen{"”"}, totally different layer. Chronicler is the third path — neither a tool for AI nor automation for you, but a daily{" "}
+                <strong>witness writing back to your inbox</strong>.
+              </>
+            )}
           </p>
 
           <div style={{ overflowX: "auto" }}>
@@ -306,6 +344,7 @@ export default function Home() {
                 <tr>
                   <th>{zh ? "维度" : "Dimension"}</th>
                   <th>OpenAI Chronicle</th>
+                  <th>OpenChronicle</th>
                   <th style={{ color: "var(--accent)" }}>
                     Chronicler · 观时者
                   </th>
@@ -319,19 +358,61 @@ export default function Home() {
                   <td style={{ color: "var(--muted)" }}>
                     {zh ? "让 AI 替你做事" : "AI acts for you"}
                   </td>
+                  <td style={{ color: "var(--muted)" }}>
+                    {zh ? "给 AI 喂上下文" : "Feed context to AI"}
+                  </td>
                   <td>{zh ? "让 AI 替你看见" : "AI witnesses for you"}</td>
+                </tr>
+                <tr>
+                  <td>
+                    <strong>{zh ? "给谁用" : "Built for"}</strong>
+                  </td>
+                  <td style={{ color: "var(--muted)" }}>
+                    {zh ? "ChatGPT Pro 订阅用户" : "ChatGPT Pro subscribers"}
+                  </td>
+                  <td style={{ color: "var(--muted)" }}>
+                    {zh
+                      ? "AI 开发者 · Cursor / Codex 用户"
+                      : "AI developers · Cursor / Codex users"}
+                  </td>
+                  <td>
+                    {zh
+                      ? "多身份知识工作者"
+                      : "Multi-identity knowledge workers"}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <strong>{zh ? "你拿到什么" : "What you get"}</strong>
+                  </td>
+                  <td style={{ color: "var(--muted)" }}>
+                    {zh ? "Codex 写代码更准" : "Smarter Codex completions"}
+                  </td>
+                  <td style={{ color: "var(--muted)" }}>
+                    {zh
+                      ? "可被多 Agent 共享的记忆层 (MCP)"
+                      : "A memory layer any agent can call (MCP)"}
+                  </td>
+                  <td>
+                    {zh
+                      ? "每日双语简报 · OKR 对齐 · 金句"
+                      : "Daily bilingual briefing · OKR alignment · pithy quote"}
+                  </td>
                 </tr>
                 <tr>
                   <td>
                     <strong>{zh ? "哲学" : "Philosophy"}</strong>
                   </td>
                   <td style={{ color: "var(--muted)" }}>
-                    {zh ? "\u201c比你更懂你\u201d" : "\u201cKnows you better\u201d"}
+                    {zh ? "“比你更懂你”" : "“Knows you better”"}
+                  </td>
+                  <td style={{ color: "var(--muted)" }}>
+                    {zh ? "记忆是基础设施" : "Memory is infrastructure"}
                   </td>
                   <td>
                     {zh
-                      ? "观察，不评判（柳比歇夫传统）"
-                      : "Observation, never judgment (Lyubishchev)"}
+                      ? "观察，不评判（柳比歇夫）"
+                      : "Observation, not judgment (Lyubishchev)"}
                   </td>
                 </tr>
                 <tr>
@@ -341,25 +422,15 @@ export default function Home() {
                   <td style={{ color: "var(--muted)" }}>
                     {zh ? "OpenAI 服务器" : "OpenAI servers"}
                   </td>
+                  <td style={{ color: "var(--muted)" }}>
+                    {zh
+                      ? "本地 · Markdown + SQLite"
+                      : "Local · Markdown + SQLite"}
+                  </td>
                   <td>
                     {zh
                       ? "你的 Obsidian · 你的 GitHub"
                       : "Your Obsidian · your GitHub"}
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <strong>{zh ? "隐私" : "Privacy"}</strong>
-                  </td>
-                  <td style={{ color: "var(--muted)" }}>
-                    {zh
-                      ? "云端为主 · 本地未加密"
-                      : "Cloud-first · unencrypted at rest"}
-                  </td>
-                  <td>
-                    {zh
-                      ? "本地优先 · 只传派生摘要"
-                      : "Local-first · only summaries cross wire"}
                   </td>
                 </tr>
                 <tr>
@@ -369,20 +440,22 @@ export default function Home() {
                   <td style={{ color: "var(--muted)" }}>
                     {zh ? "封闭 · $200 / 月" : "Closed · $200/mo"}
                   </td>
+                  <td style={{ color: "var(--muted)" }}>
+                    {zh ? "MIT 开源 · 免费" : "MIT · free"}
+                  </td>
                   <td>
-                    {zh
-                      ? "AGPLv3 · 约 $1–6 / 月"
-                      : "AGPLv3 · ~$1–6/mo"}
+                    {zh ? "AGPLv3 · 约 $1–6 / 月" : "AGPLv3 · ~$1–6/mo"}
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <strong>{zh ? "可用区域" : "Availability"}</strong>
+                    <strong>{zh ? "可用" : "Availability"}</strong>
                   </td>
                   <td style={{ color: "var(--muted)" }}>
-                    {zh
-                      ? "欧盟 / 英国 / 瑞士未发售"
-                      : "Not in EU / UK / CH"}
+                    {zh ? "欧盟 / 英国 / 瑞士未发售" : "Not in EU / UK / CH"}
+                  </td>
+                  <td style={{ color: "var(--muted)" }}>
+                    {zh ? "任何地方" : "Anywhere"}
                   </td>
                   <td>{zh ? "任何地方" : "Anywhere"}</td>
                 </tr>
@@ -390,7 +463,21 @@ export default function Home() {
             </table>
           </div>
 
-          <p style={{ marginTop: 14, fontSize: "0.95rem" }}>
+          <p
+            style={{
+              marginTop: 18,
+              fontSize: "0.95rem",
+              color: "var(--muted)",
+              maxWidth: 760,
+              fontStyle: "italic",
+            }}
+          >
+            {zh
+              ? "三个项目互为补充，不是 zero-sum。OpenChronicle 让别的 Agent 拥有上下文；Chronicler 让你自己看清自己的时间。"
+              : "These three are complements, not rivals. OpenChronicle gives other agents context; Chronicler gives you back a view of your own time."}
+          </p>
+
+          <p style={{ marginTop: 12, fontSize: "0.95rem" }}>
             <Link href="/about">
               {zh ? "了解背后的哲学 →" : "Read the philosophy behind this →"}
             </Link>
