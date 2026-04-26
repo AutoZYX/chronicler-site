@@ -487,3 +487,9 @@ footer p { margin: 4px 0; }
   .pillar-card { padding: 18px; }
   .code-block { padding: 16px; font-size: 0.75rem; }
 }
+
+/* AutoZYX brand strip — 跨站统一 */
+.autozyx-brand{position:fixed;top:16px;left:20px;display:flex;align-items:center;gap:10px;padding:5px 14px 5px 5px;background:rgba(250,249,245,0.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(224,222,214,0.7);border-radius:28px;text-decoration:none;color:#1a1a18;font:500 13px/1 'Inter',-apple-system,sans-serif;z-index:100;transition:border-color .15s,transform .15s}
+.autozyx-brand:hover{border-color:#8a8a80;text-decoration:none;transform:translateY(-1px)}
+.autozyx-brand img{width:30px;height:30px;border-radius:50%;object-fit:cover;display:block}
+@media (max-width:768px){.autozyx-brand{left:14px}.autozyx-brand span{display:none}}
