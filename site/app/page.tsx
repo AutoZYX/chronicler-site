@@ -7,82 +7,83 @@ const GH_TOOL = "https://github.com/AutoZYX/chronicler";       // placeholder (c
 const GH_SITE = "https://github.com/AutoZYX/chronicler-site";  // this landing page
 const NOTIFY = "mailto:hello@autozyx.com?subject=Chronicler%20v0.1%20launch%20notify&body=Please%20let%20me%20know%20when%20Chronicler%20ships.";
 
-const SAMPLE_OUTPUT = `Day: 2026-04-15 · Tuesday · a multi-identity day
+const SAMPLE_OUTPUT = `Day: 2026-04-15 · Tuesday · what was on the screen
 
-07:15 – 08:45   🌿 life       ●●●      90 min
-Morning routine — breakfast, school drop, walk back
-早晨例行——早餐、送娃上学、步行回家
+08:00 – 10:10   🛡 safety     ●●●     130 min
+HARA review for L3 release — async team block
+L3 项目 HARA 评审——异步团队时段
+
+— SOTIF scenarios catalog                   68 min
+  SOTIF 场景目录梳理
+— Hazard log v4 review                      42 min
+  危险分析日志 v4 评审
+— Engineer threads on Lark                  20 min
+  飞书工程师沟通
+
+Hanging · Hazard log v4 — 5 项 risk 未签字
+         Hazard log v4 — 5 risk items pending sign-off
 
 ───────────────────────────────────────────────
 
-09:02 – 11:38   🎓 research   ●●●     156 min
+10:25 – 12:05   🎓 research   ●●●     100 min
 Grant proposal revision — first focused block in two weeks
 课题申请修订——两周来第一个集中块
 
-— Overleaf · proposal.tex                   98 min
+— Overleaf · proposal.tex                   70 min
   Overleaf 改提案正文
-— Literature cross-check                    22 min
+— Literature cross-check                    20 min
   查相关先验文献
-— Email with co-author                      16 min
-  和合作者邮件沟通
-— Student DM reply                           8 min
+— Student DM reply                          10 min
   给学生简短回复
 
-Hanging · 未完事项
-  · Discussion section 还差一段——明天接着写
-    Discussion section needs one more paragraph
+Hanging · Discussion section 还差一段——明天接着写
+         Discussion section needs one more paragraph
 
 ───────────────────────────────────────────────
 
-11:40 – 12:20   🌿 life       ●●○      40 min
-Lunch + family chat
-午饭 + 家人闲聊
+13:35 – 14:30   ✈️ founder    ●●○      55 min
+Founder block — partner ping + blog draft
+创始人时段——合作方对接 + 博客起草
 
-12:55 – 14:20   🛡 safety     ●●○      85 min
-Async team block — weekly review + client memo v3
-异步团队时段——周会笔记 + 客户备忘录 v3
+— Email with potential partner              22 min
+  合作方邮件沟通
+— Substack draft (open-source post)         25 min
+  Substack 草稿
+— GitHub · 1 PR review                       8 min
+  review 1 个 PR
+
+───────────────────────────────────────────────
+
+14:40 – 15:50   🛡 safety     ●●○      70 min
+Weekly review + client memo v3
+周会笔记 + 客户备忘录 v3
+
+— Memo v3 — conclusion section              45 min
+  Memo v3 结论章节
+— Async DM with safety team                 25 min
+  与安全团队异步沟通
 
 Hanging · Memo v3 结论章节未完
          Memo v3 conclusion still pending
-
-14:25 – 14:50   ✈️ founder    ●●○      25 min
-Founder interjection — blog draft + partner ping
-创始人短时插入——博客起草 + 合作方跟进
-
-15:10 – 17:30   🌿 life       ●●●     140 min
-Kid pickup → park → dinner
-接娃 → 公园 → 晚饭
-
-20:15 – 21:40   ✈️ founder    ●●●      85 min
-After-kid founder block — platform UX polish
-娃睡后创始人时段——产品 UX 打磨
-
-— IDE · frontend refactor                   58 min
-  IDE 重构前端
-— GitHub · 3 PRs review & merge             18 min
-  review 并合并 3 个 PR
-
-21:45 – 22:30   🎓 research   ●●○      45 min
-Bedtime — paper browsing, 2 ideas jotted for tomorrow
-睡前翻论文，记下 2 个明天用的想法
 
 ═══════════════════════════════════════════════
 
 Summary · 一天总览
 
-  🎓 research  201 min / 3h 21m   Grant writing + bedtime reading
-  🛡 safety     85 min / 1h 25m   Weekly review + client memo
-  ✈️ founder  110 min / 1h 50m   Platform UX + partner + content
-  🌿 life     270 min / 4h 30m   Morning + pickup + family
+  🛡 safety   200 min / 3h 20m   HARA review + memo v3 + team async
+  🎓 research 100 min / 1h 40m   Grant writing
+  ✈️ founder   55 min / 0h 55m   Partner + blog + PR review
 
-  Total observed: 666 min / 11h 06m
+  Total observed on screen: 355 min / 5h 55m
+  屏幕外的时间 (家人 / 孩子 / 散步 / 睡眠) 不进 Chronicler — by design.
+  Off-screen life is left untracked — the tool does not surveil away from the keyboard.
 
   Cross-day threads · 跨天主线
-    · Grant discussion (yesterday → today → tomorrow)
-    · Client memo v3 conclusion (started today, pending)
-    · Bedtime notes feed tomorrow's focus block
+    · Hazard log v4 sign-off (today → tomorrow)
+    · Discussion section (today → tomorrow)
+    · Memo v3 conclusion (started today, pending)
 
-* identity keys (research / safety / founder / life) are user-configurable
+* identity keys (research / safety / founder) are user-configurable
   身份 key 完全由用户自定义，此处为虚构示例`;
 
 export default function Home() {
@@ -265,17 +266,19 @@ export default function Home() {
           >
             {zh ? (
               <>
-                虚构示例——一位学者 / 安全工程师 / 独立创始人 / 家长身份并存的典型一天。
+                虚构示例——一位学者 / 安全工程师 / 独立创始人在屏幕前的典型一天。
                 每晚 23:35，Claude Opus 读过去 24 小时事件流 + 你的 OKR 文件，
                 产出双语分段。写进你自己的 Obsidian vault——iCloud 同步，iOS 可读。
+                屏幕之外的时间——家人、孩子、散步、睡眠——不进 Chronicler。
               </>
             ) : (
               <>
-                A fictional example — one day in the life of someone who is
-                simultaneously an academic, a safety engineer, an indie founder,
-                and a parent. Each night at 23:35, Claude Opus reads the day&rsquo;s
-                event stream plus your OKR file and emits bilingual segments into
-                your Obsidian vault (iCloud-synced, iOS-readable).
+                A fictional example — one day at the keyboard for someone who is
+                simultaneously an academic, a safety engineer, and an indie founder.
+                Each night at 23:35, Claude Opus reads the day&rsquo;s event stream
+                plus your OKR file and emits bilingual segments into your Obsidian
+                vault (iCloud-synced, iOS-readable). Time away from the screen —
+                family, kids, walks, sleep — stays out of Chronicler by design.
               </>
             )}
           </p>
