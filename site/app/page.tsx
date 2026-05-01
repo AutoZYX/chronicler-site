@@ -1,11 +1,16 @@
 "use client";
 
+import { Fragment } from "react";
 import Link from "next/link";
 import { useLang } from "@/lib/i18n";
 
 const GH_TOOL = "https://github.com/AutoZYX/chronicler";       // placeholder (coming soon)
 const GH_SITE = "https://github.com/AutoZYX/chronicler-site";  // this landing page
 const NOTIFY = "mailto:hello@autozyx.com?subject=Chronicler%20v0.1%20launch%20notify&body=Please%20let%20me%20know%20when%20Chronicler%20ships.";
+
+// Long-form essay (2026-05-01) — published on WeChat first, blog version is the canonical English+Chinese reference.
+const ESSAY_ZH = "https://blog.autozyx.com/posts/practicing-lyubishchev-in-2026/";
+const ESSAY_EN = "https://blog.autozyx.com/en/posts/practicing-lyubishchev-in-2026/";
 
 const SAMPLE_OUTPUT = `Day: 2026-04-15 · Tuesday · what was on the screen
 
@@ -111,8 +116,8 @@ export default function Home() {
 
         <p className="tagline main">
           {zh
-            ? "你自己拥有的 AI 时间账本。观察多重身份间的真实工作流向——不评判，只记录。柳比歇夫的时间账本法，在 AI 时代几乎零成本。"
-            : "Observes your work across the identities you switch between. Writes bilingual daily digests into your Obsidian vault. Witnessing, never judging. Lyubishchev's time-accounting method, made nearly free by AI."}
+            ? "AI 时代的柳比歇夫——把目标分解链路接通，从人生目标到每一分钟，每一层都被支撑。每天 30 分钟手工记账的代价，归零。"
+            : "Lyubishchev for the AI era. The five-layer decomposition chain — life-goal → 5-year plan → annual OKR → month/week → daily time — supported at every layer, with no daily ledger to keep."}
         </p>
 
         <p
@@ -145,6 +150,39 @@ export default function Home() {
             {zh ? "了解更多" : "Learn more"}
           </a>
         </div>
+
+        <p
+          style={{
+            marginTop: 18,
+            fontSize: "0.9rem",
+            color: "var(--muted)",
+            textAlign: "center",
+          }}
+        >
+          {zh ? (
+            <>
+              📖 长篇背景：
+              <a href={ESSAY_ZH} target="_blank" rel="noopener noreferrer">
+                《如何实践，并活出《奇特的一生》》
+              </a>
+              （中文 · 2026-05-01）·{" "}
+              <a href={ESSAY_EN} target="_blank" rel="noopener noreferrer">
+                English version
+              </a>
+            </>
+          ) : (
+            <>
+              📖 Background essay:{" "}
+              <a href={ESSAY_EN} target="_blank" rel="noopener noreferrer">
+                Practicing Lyubishchev in 2026
+              </a>{" "}
+              (English) ·{" "}
+              <a href={ESSAY_ZH} target="_blank" rel="noopener noreferrer">
+                中文版
+              </a>
+            </>
+          )}
+        </p>
       </header>
 
       {/* ═══════════════════════════ STATS BAR ═══════════════════════════ */}
@@ -185,8 +223,8 @@ export default function Home() {
             <div className="alert-text">
               {zh ? (
                 <>
-                  1918 年苏联昆虫学家柳比歇夫（Alexander Lyubishchev）开始用笔纸做
-                  「时间账本法」。他坚持 56 年，每天 30 分钟手工记账，
+                  1916 年元旦，苏联昆虫学家柳比歇夫（Alexander Lyubishchev）
+                  开始用笔纸做「时间统计法」。他坚持 56 年，每天 30 分钟手工记账，
                   以一人之力做出 6 个领域的世界级科研。
                   <strong>他的方法在当时是革命性的，但有一个不可承受的代价——每天 30 分钟。</strong>
                   {" "}AI 让这件事几乎零成本。Chronicler 不要求你做任何记账：
@@ -194,9 +232,10 @@ export default function Home() {
                 </>
               ) : (
                 <>
-                  In 1918 Soviet entomologist Alexander Lyubishchev began hand-logging
-                  his time with pen and paper. He kept it up for 56 years, producing
-                  world-class research in six fields single-handedly.
+                  On New Year&rsquo;s Day 1916, Soviet entomologist Alexander
+                  Lyubishchev began hand-logging his time with pen and paper. He
+                  kept it up for 56 years, producing world-class research in six
+                  fields single-handedly.
                   <strong> His method was revolutionary — but cost 30 minutes
                     of daily accounting.</strong>{" "}
                   AI makes that cost nearly zero. Chronicler asks nothing of you:
@@ -205,20 +244,169 @@ export default function Home() {
                 </>
               )}
             </div>
+            <div
+              className="alert-text"
+              style={{
+                marginTop: 14,
+                paddingTop: 14,
+                borderTop: "1px solid var(--border)",
+                fontStyle: "italic",
+                color: "var(--muted)",
+              }}
+            >
+              {zh
+                ? "柳比歇夫真正传下来的，不是 56 年记账的纪律——是他选择了一类不属于他个人的问题，并做了 56 年。Chronicler 想做的，是替你扛起记账，把那个真正难的问题留给你。"
+                : "What Lyubishchev quietly passed down was not the discipline of 56 years of accounting — it was his choice of a problem that didn’t belong to him personally, and 56 years of working on it. Chronicler carries the accounting so you can keep the hard part for yourself."}
+            </div>
           </div>
 
+          {/* ─────────── 5-layer Decomposition Chain (the article's central diagram) ─────────── */}
           <h2 className="section-title">
+            {zh ? "柳比歇夫的链路 · AI 协助版" : "Lyubishchev's Chain, AI-assisted"}
+          </h2>
+          <p
+            style={{
+              color: "var(--muted)",
+              fontSize: "1rem",
+              marginBottom: 20,
+              maxWidth: 760,
+            }}
+          >
+            {zh
+              ? "记录只是末梢，规划才是核心。柳比歇夫每天结账之外，每周复盘、每月复盘、每年复盘，往上是 5 年计划，再往上是「一生想解决的问题」作为顶端的锚。Chronicler 让这条 5 层链路在 AI 协助下不需要纪律就能持续运行——每一层都接上一段轻量协助。"
+              : "Recording is the leaf, not the trunk. Above Lyubishchev's daily ledger sits a weekly review, monthly review, yearly review, a 5-year plan, and at the top — \"the question I want to answer with my life.\" Chronicler keeps this five-layer chain running without the user paying a daily discipline tax. AI assistance attaches at every layer."}
+          </p>
+
+          <div
+            style={{
+              background: "var(--card-bg)",
+              border: "1px solid var(--border)",
+              borderRadius: "var(--radius)",
+              padding: "24px",
+              marginBottom: 24,
+              textAlign: "center",
+            }}
+          >
+            <img
+              src="/decomposition.png"
+              alt={
+                zh
+                  ? "从人生目标到每一分钟 · 柳比歇夫的目标分解链路 · AI 协助版"
+                  : "From life-goal to every minute — Lyubishchev's decomposition chain, AI-assisted"
+              }
+              style={{
+                maxWidth: "100%",
+                height: "auto",
+                display: "block",
+                margin: "0 auto",
+              }}
+            />
+            <p
+              style={{
+                marginTop: 14,
+                fontSize: "0.85rem",
+                color: "var(--muted)",
+                fontStyle: "italic",
+              }}
+            >
+              {zh
+                ? "5 层目标分解链路：人生目标 → 5 年规划 → 年度 OKR → 月/周目标 → 日常时间投入"
+                : "Five layers: life-goal → 5-year plan → annual OKR → month/week → daily time on screen"}
+            </p>
+          </div>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "auto 1fr",
+              gap: "12px 18px",
+              fontSize: "0.95rem",
+              lineHeight: 1.65,
+              maxWidth: 820,
+              marginBottom: 8,
+            }}
+          >
+            {(zh
+              ? [
+                  ["顶层 · 人生目标", "AI 陪你想清「想解决什么问题」 · 把个人目标转成公共目标"],
+                  ["5 年规划", "从历史记录蒸馏主线 · 检查长线轨迹"],
+                  ["年度 OKR", "KR 互检 · 进度估算 · 按身份分布给 alignment 视图"],
+                  ["月 / 周目标", "本周 OKR 时长 mapping · drift 检测 · Chief of Staff 观察"],
+                  ["日常时间投入", "读屏幕 + 自动归类身份 · 每晚生成中英双语简报"],
+                ]
+              : [
+                  ["Top · life-goal", "AI helps you clarify the question worth answering — and reshape personal goals into public ones"],
+                  ["5-year plan", "Distills the through-line from years of notes; surfaces long-arc trajectories"],
+                  ["Annual OKR", "Cross-checks Key Results · estimates progress · gives an alignment view by identity"],
+                  ["Month / week", "Maps the week's hours onto OKRs · detects drift · acts as a Chief-of-Staff reviewer"],
+                  ["Daily time", "Reads the screen, classifies identity, writes a bilingual nightly briefing"],
+                ]
+            ).map(([layer, what], i) => (
+              <Fragment key={i}>
+                <div
+                  style={{
+                    color: "var(--accent)",
+                    fontWeight: 600,
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {layer}
+                </div>
+                <div style={{ color: "var(--text)" }}>{what}</div>
+              </Fragment>
+            ))}
+          </div>
+
+          <p
+            style={{
+              marginTop: 22,
+              fontSize: "0.95rem",
+              color: "var(--muted)",
+              fontStyle: "italic",
+              maxWidth: 760,
+            }}
+          >
+            {zh ? (
+              <>
+                工具是壳，方法是肉。详见{" "}
+                <a href={ESSAY_ZH} target="_blank" rel="noopener noreferrer">
+                  长篇背景文章
+                </a>
+                。
+              </>
+            ) : (
+              <>
+                The tool is the shell. The method is the meat. The full argument lives in{" "}
+                <a href={ESSAY_EN} target="_blank" rel="noopener noreferrer">
+                  the background essay
+                </a>
+                .
+              </>
+            )}
+          </p>
+
+          {/* ─────────── Four Pillars (reordered: 🎯 first, then 🎭 / 🏠 / ⚡) ─────────── */}
+          <h2 className="section-title" style={{ marginTop: 56 }}>
             {zh ? "四大支柱" : "Four Pillars"}
           </h2>
 
           <div className="pillars">
             <div className="pillar-card">
+              <span className="pillar-icon">🎯</span>
+              <h3>{zh ? "目标对齐" : "Goal-aware"}</h3>
+              <p>
+                {zh
+                  ? "读你的 life_goals.md——OKR、5 年愿景、长期承诺。每晚把今天的时间投入对照到目标上，但永不评分。"
+                  : "Reads your life_goals.md — OKRs, 5-year vision, long-term commitments. Each night, maps today's time against your goals. Describes. Never scores."}
+              </p>
+            </div>
+            <div className="pillar-card">
               <span className="pillar-icon">🎭</span>
               <h3>{zh ? "多身份感知" : "Multi-identity aware"}</h3>
               <p>
                 {zh
-                  ? "学者 / 工程师 / 创始人 / 家长 在同一天切换——AI 自动识别。忘记手动切也没关系。"
-                  : "Professor / engineer / founder / parent in a single day — the AI infers which is which. No need to remember to switch."}
+                  ? "学者 / 工程师 / 创始人 / 家长 在同一天切换——AI 自动识别。也支持「一顶帽子下面装着一堆事」的非身份切换型工作。"
+                  : "Professor / engineer / founder / parent in one day — AI infers which is which. Also fits the \"one hat, many fragments\" specialist whose day still gets shredded across very different tasks."}
               </p>
             </div>
             <div className="pillar-card">
@@ -228,15 +416,6 @@ export default function Home() {
                 {zh
                   ? "原始事件留在本机 SQLite，永不上云。只有派生摘要过网到 Claude API。"
                   : "Raw events stay in local SQLite — never leave your Mac. Only derived summaries cross the network."}
-              </p>
-            </div>
-            <div className="pillar-card">
-              <span className="pillar-icon">🎯</span>
-              <h3>{zh ? "目标对齐" : "Goal-aware"}</h3>
-              <p>
-                {zh
-                  ? "读你的 life_goals.md——OKR、5 年愿景、长期承诺。描述时间与目标的关系，但永不评分。"
-                  : "Reads your life_goals.md — OKRs, 5-year vision, long-term commitments. Describes the relationship. Never scores it."}
               </p>
             </div>
             <div className="pillar-card">
@@ -294,6 +473,116 @@ export default function Home() {
             }}
           >
             Inferred / 2026-04-15.md
+          </p>
+        </section>
+
+        {/* ═══════════════════ PUBLIC GOAL vs PERSONAL GOAL ═══════════════════ */}
+        <section className="divider">
+          <h2 className="section-title">
+            {zh
+              ? "顶层目标的「性质」决定一切"
+              : "The shape of the goal at the top decides everything"}
+          </h2>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: 18,
+              maxWidth: 880,
+              marginBottom: 22,
+            }}
+          >
+            <div
+              style={{
+                background: "var(--card-bg)",
+                border: "1px solid var(--border)",
+                borderRadius: "var(--radius)",
+                padding: "20px 22px",
+              }}
+            >
+              <div
+                style={{
+                  fontSize: "0.75rem",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.08em",
+                  color: "var(--muted)",
+                  marginBottom: 8,
+                }}
+              >
+                {zh ? "个人目标" : "Personal goal"}
+              </div>
+              <div style={{ fontWeight: 600, marginBottom: 10, fontSize: "1.05rem" }}>
+                {zh ? "「成为某领域第一」" : "“Become #1 in field X”"}
+              </div>
+              <p style={{ color: "var(--muted)", fontSize: "0.92rem", lineHeight: 1.65, margin: 0 }}>
+                {zh
+                  ? "立刻给自己设定了一群竞争对手。同行的好成果让你懊恼；项目落给别家让你沮丧；合作转向让你觉得「投入白费」。情绪不来自外部世界，来自顶层目标的性质。"
+                  : "Instantiates a population of competitors. A peer's strong paper makes you resentful; a grant going elsewhere deflates you; a partner choosing another lab feels like wasted effort. The emotions don't come from the world — they come from the goal's shape."}
+              </p>
+            </div>
+
+            <div
+              style={{
+                background: "var(--badge-bg)",
+                border: "1px solid var(--accent)",
+                borderRadius: "var(--radius)",
+                padding: "20px 22px",
+              }}
+            >
+              <div
+                style={{
+                  fontSize: "0.75rem",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.08em",
+                  color: "var(--accent)",
+                  marginBottom: 8,
+                }}
+              >
+                {zh ? "公共目标" : "Public goal"}
+              </div>
+              <div style={{ fontWeight: 600, marginBottom: 10, fontSize: "1.05rem" }}>
+                {zh ? "「让一类人因这件事更安全 / 健康 / 自由」" : "“Help advance a problem that doesn't belong to anyone”"}
+              </div>
+              <p style={{ color: "var(--text)", fontSize: "0.92rem", lineHeight: 1.65, margin: 0 }}>
+                {zh
+                  ? "同行解决了你也想解决的问题——世界离目标更近一步，你为他们高兴。合作转向——这件工作仍在被推进，他们是友军不是对手。你的内在状态和外部世界重新对齐。"
+                  : "When peers solve the problem you care about, the world moves a step closer to your goal — you're glad they did. When a partner picks someone else, the work is still being done. They're allies, not opponents. Your inner state stops fighting the world."}
+              </p>
+            </div>
+          </div>
+
+          <p
+            style={{
+              maxWidth: 760,
+              fontStyle: "italic",
+              color: "var(--muted)",
+              fontSize: "0.95rem",
+              lineHeight: 1.7,
+            }}
+          >
+            {zh ? (
+              <>
+                这是文章的核心论点之一——比工具更重要的，是顶层目标的性质。Chronicler
+                能替你扛起记账，但没法替你选「想解决什么问题」。这一步只能你自己做。
+                完整论述见{" "}
+                <a href={ESSAY_ZH} target="_blank" rel="noopener noreferrer">
+                  长篇背景文章 §4「和世界站在同一边」
+                </a>
+                。
+              </>
+            ) : (
+              <>
+                This is one of the core arguments in the background essay — more
+                important than the tool is the *shape* of the top-level goal.
+                Chronicler can carry the accounting, but it can't pick the question
+                worth answering. That step is yours. Full argument in{" "}
+                <a href={ESSAY_EN} target="_blank" rel="noopener noreferrer">
+                  the essay, §4 "Standing on the same side as the world"
+                </a>
+                .
+              </>
+            )}
           </p>
         </section>
 
