@@ -69,8 +69,8 @@ export default function Architecture() {
               <h3>{zh ? "推断" : "Infer"}</h3>
               <p>
                 {zh
-                  ? "Classifier（主，LLM）+ Heuristic（降级，纯关键词）+ Budget（守门，$10 / 月上限）。唯一跨网络的层。"
-                  : "Classifier (LLM primary) + Heuristic (keyword fallback) + Budget (gate, $10/mo cap). The only networked layer."}
+                  ? "Classifier（主，LLM）+ Heuristic（降级，纯关键词）+ Budget（守门，月度上限可配）。唯一跨网络的层。"
+                  : "Classifier (LLM primary) + Heuristic (keyword fallback) + Budget (gate, configurable monthly cap). The only networked layer."}
               </p>
             </div>
             <div className="card">
@@ -99,7 +99,7 @@ export default function Architecture() {
             <li>Python 3.11+ · pyobjc (AppKit / Quartz) · AppleScript (osascript)</li>
             <li>SQLite 3 (stdlib) · WAL mode · 6 tables</li>
             <li>pywebview 6.2.1 · rumps 0.4 · PyYAML · python-dateutil</li>
-            <li>Anthropic SDK · Claude Opus 4.7 · prompt caching</li>
+            <li>OpenAI SDK · DeepSeek V4 Pro (default, OpenAI-compatible) · auto context caching · Anthropic Claude as fallback</li>
             <li>launchd · 4 plist agents (collector / menubar / lobby / classify)</li>
           </ul>
         </section>

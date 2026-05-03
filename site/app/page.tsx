@@ -206,7 +206,7 @@ export default function Home() {
           </span>
         </div>
         <div className="stat">
-          <span className="stat-number">$1–6</span>
+          <span className="stat-number">&lt;$1</span>
           <span className="stat-label">
             {zh ? "月度成本" : "Per month"}
           </span>
@@ -420,11 +420,11 @@ export default function Home() {
             </div>
             <div className="pillar-card">
               <span className="pillar-icon">⚡</span>
-              <h3>{zh ? "低成本" : "$1–6 a month"}</h3>
+              <h3>{zh ? "低成本" : "Under $1 a month"}</h3>
               <p>
                 {zh
-                  ? "Claude Opus 4.7 + Anthropic prompt caching。$10 月度预算硬上限。超预算自动降级。"
-                  : "Claude Opus 4.7 with prompt caching. Hard $10/mo budget cap with graceful degradation if exceeded."}
+                  ? "DeepSeek V4 Pro（OpenAI 兼容 API）+ 自动 context caching。日均 ~$0.01，月度上限可配。也支持回退到 Claude Sonnet/Opus。"
+                  : "DeepSeek V4 Pro (OpenAI-compatible API) with automatic context caching. ~$0.01/day, hard monthly cap is user-configurable. Anthropic Claude (Sonnet/Opus) is supported as a fallback."}
               </p>
             </div>
           </div>
@@ -446,18 +446,19 @@ export default function Home() {
             {zh ? (
               <>
                 虚构示例——一位学者 / 安全工程师 / 独立创始人在屏幕前的典型一天。
-                每晚 23:35，Claude Opus 读过去 24 小时事件流 + 你的 OKR 文件，
-                产出双语分段。写进你自己的 Obsidian vault——iCloud 同步，iOS 可读。
-                屏幕之外的时间——家人、孩子、散步、睡眠——不进 Chronicler。
+                每晚 23:35，DeepSeek V4 Pro（或可选 Claude）读过去 24 小时事件流 +
+                你的 OKR 文件，产出双语分段。写进你自己的 Obsidian vault——iCloud
+                同步，iOS 可读。屏幕之外的时间——家人、孩子、散步、睡眠——不进 Chronicler。
               </>
             ) : (
               <>
                 A fictional example — one day at the keyboard for someone who is
                 simultaneously an academic, a safety engineer, and an indie founder.
-                Each night at 23:35, Claude Opus reads the day&rsquo;s event stream
-                plus your OKR file and emits bilingual segments into your Obsidian
-                vault (iCloud-synced, iOS-readable). Time away from the screen —
-                family, kids, walks, sleep — stays out of Chronicler by design.
+                Each night at 23:35, DeepSeek V4 Pro (or optionally Claude) reads
+                the day&rsquo;s event stream plus your OKR file and emits bilingual
+                segments into your Obsidian vault (iCloud-synced, iOS-readable).
+                Time away from the screen — family, kids, walks, sleep — stays out
+                of Chronicler by design.
               </>
             )}
           </p>
@@ -736,7 +737,7 @@ export default function Home() {
                     {zh ? "MIT 开源 · 免费" : "MIT · free"}
                   </td>
                   <td>
-                    {zh ? "AGPLv3 · 约 $1–6 / 月" : "AGPLv3 · ~$1–6/mo"}
+                    {zh ? "AGPLv3 · 约 $0.30 / 月" : "AGPLv3 · ~$0.30/mo"}
                   </td>
                 </tr>
                 <tr>
