@@ -11,11 +11,17 @@ export const metadata: Metadata = {
   icons: {
     icon: "https://autozyx.com/assets/favicon.png",
   },
+  metadataBase: new URL("https://chronicler.autozyx.com"),
   openGraph: {
     title: "Chronicler · 观时者",
     description:
       "Lyubishchev's time-accounting method, made cheap by AI. Observation, never judgment.",
     type: "website",
+    url: "https://chronicler.autozyx.com",
+    images: [{ url: "https://chronicler.autozyx.com/decomposition.png" }],
+  },
+  twitter: {
+    card: "summary_large_image",
   },
 };
 
