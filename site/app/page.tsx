@@ -194,7 +194,7 @@ export default function Home() {
           </span>
         </div>
         <div className="stat">
-          <span className="stat-number">Q2 &apos;26</span>
+          <span className="stat-number">2026</span>
           <span className="stat-label">
             {zh ? "预计发布" : "Expected ship"}
           </span>
@@ -836,7 +836,7 @@ export default function Home() {
             <span className="coming-soon-kicker">
               {zh ? "期待上线" : "Coming Soon"}
             </span>
-            <h3>{zh ? "v0.1 预计 2026 Q2 开源发布" : "v0.1 expected Q2 2026"}</h3>
+            <h3>{zh ? "v0.1 预计 2026 年内开源发布" : "v0.1 expected in 2026"}</h3>
             <p>
               {zh
                 ? "核心功能已完成并在作者本机日用测试中。正在打磨分类器准确率、本地模型 fallback、以及完整的 macOS 安装体验。Star 仓库获取发布通知，或发邮件加入 early-preview 名单。"

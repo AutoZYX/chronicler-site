@@ -252,7 +252,7 @@ export default function About() {
           >
             <li>
               <strong style={{ color: "var(--accent)" }}>v0.1</strong>{" "}
-              ({zh ? "2026 Q2 · 期待上线" : "Q2 2026 · shipping soon"}) —{" "}
+              ({zh ? "2026 年内 · 期待上线" : "in 2026 · shipping soon"}) —{" "}
               {zh
                 ? "collector / 分类器 / 双语 digest / ambient widget / menubar / toast / Selective 模式"
                 : "collector, AI classifier, bilingual digests, ambient widget, menu bar, toast, Selective mode"}

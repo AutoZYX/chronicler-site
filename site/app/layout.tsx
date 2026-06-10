@@ -7,7 +7,7 @@ import { I18nProvider } from "@/lib/i18n";
 export const metadata: Metadata = {
   title: "Chronicler · 观时者 — An AI-assisted time ledger you own",
   description:
-    "Open-source macOS tool that observes your work across multiple identities, infers per-context time segments with AI, and writes bilingual daily digests to your Obsidian vault. Local-first. AGPLv3. Coming Q2 2026.",
+    "Open-source macOS tool that observes your work across multiple identities, infers per-context time segments with AI, and writes bilingual daily digests to your Obsidian vault. Local-first. AGPLv3. Coming in 2026.",
   icons: {
     icon: "https://autozyx.com/assets/favicon.png",
   },
